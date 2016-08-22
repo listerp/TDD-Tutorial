@@ -61,7 +61,9 @@ We'll start off by creating out VS solution, and adding two empty C# library pro
 * TDD.Core
 * TDD.Core.Tests
 
-Before we can start writing unit tests, we will need to install some NuGet packages in our TDD.Core.Tests project.
+Before we can start writing unit tests, we need to do a couple of things:
+
+* First we need to install some NuGet packages in our TDD.Core.Tests project.
 
 We will be using the Machine Specifications (MSpec) testing framework for this tutorial, I chose MSpec because I like the way the code reads while creating and running the tests.
 
@@ -72,9 +74,9 @@ Install-Package Machine.Specifications
 Install-Package Machine.Specifications.Should
 ```
 
-### Adding our First Test ###
+* Next we need to be sure to add a project reference to our TDD.Core project.
 
-Before we add our first test lets talk about some conventions for creating our tests.
+## Test Conventions ##
 
 From the Machine.Specifications wiki:
 
@@ -84,4 +86,34 @@ From the Machine.Specifications wiki:
 
 >You should be able to see the components of the traditional [Arrange-Act-Assert][9] model in there. To support readability and remove as much "noise" as possible, MSpec eschews the traditional attribute-on-method model of test construction. It instead uses custom .NET delegates that you assign anonymous methods and asks you to name them following a certain convention.
 
-#### Naming ####
+#### Project Layout ####
+To help us organize and find our tests I recommend creating folders in our test project for our tests, the folders allow us to 
+group our tests together by area and function I like to create a folder for each namespace for the project we are testing.  
+
+### Naming our tests ###
+Because MSpec is a "context/specification" test framework, all of our tests should start out with the word "when" so for anyone 
+looking over our test knows exactly what we are testing and when.
+
+## Our First Test ##
+
+What? We're adding a test already? But we haven't even written any code to test!
+
+Relax, this is the whole concept behind TDD (Test Driven Development) another developer pointed out to me that the third "D" in
+TDD should really be Design not Development because what we are really doing by writing our tests first is ensuring we have a 
+good design in our solution that is easily testable. Before this I really struggled with why should I ever write a test before
+I wrote even one line of code, now it makes perfect sense. I also found out that if I write my code first and then go back to 
+create tests for it, I spend extra time refactoring the code to make it more easily testable, so by writing the tests first 
+I save myself and my customer valuable time and money.
+
+### Design ###
+Now we have to decide how we are going to implment our solution. Before we can encode an entire sentence, paragraph, whatever 
+we need to be able to encode a single word, so we will implment the encode function as an extension to the string object. Based 
+on the decision to arrange our tests in project folders based on the namespace of the class being tested we need to create a 
+folder in our TDD.Core.Tests project called Extensions, under that folder create another folder called StringExtensionTests.
+
+After the folders have been created add a new class to the StringExtensionTests folder called when_a_word_is_translated. I know 
+what you are thinking what is with all the ugly underscores in our class name, wouldn't it be better to call it WhenAWordIsTranslated? 
+This is done due to the conventions most test runners use, when the tests are shown in the test runner's GUI the underscores are 
+replaced with spaces making the test names very readable.
+
+
