@@ -55,6 +55,15 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\StringExtensionTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TDD.Core\TDD.Core.csproj">
+      <Project>{e8e260c1-863a-4b21-be34-f5d826dcf73c}</Project>
+      <Name>TDD.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
