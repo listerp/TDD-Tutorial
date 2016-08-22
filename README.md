@@ -65,9 +65,23 @@ Before we can start writing unit tests, we will need to install some NuGet packa
 
 We will be using the Machine Specifications (MSpec) testing framework for this tutorial, I chose MSpec because I like the way the code reads while creating and running the tests.
 
-To install these packages open up the Package Manage Console and type these commands
+To install these packages open up the Package Manage Console, making sure you are in the TDD.Core.Tests project and type these commands
 
 ```
 Install-Package Machine.Specifications
 Install-Package Machine.Specifications.Should
 ```
+
+### Adding our First Test ###
+
+Before we add our first test lets talk about some conventions for creating our tests.
+
+From the Machine.Specifications wiki:
+
+>MSpec is called a "context/specification" test framework because of the "grammar" that is used in describing and coding the tests or "specs". That grammar reads roughly like this
+
+>>When the system is in such a state, and a certain action occurs, it should do such-and-such or be in some end state.
+
+>You should be able to see the components of the traditional [Arrange-Act-Assert][9] model in there. To support readability and remove as much "noise" as possible, MSpec eschews the traditional attribute-on-method model of test construction. It instead uses custom .NET delegates that you assign anonymous methods and asks you to name them following a certain convention.
+
+#### Naming ####
