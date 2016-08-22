@@ -1,5 +1,5 @@
 # TDD-Tutorial #
-* Lister Potter *
+*Lister Potter*
 lister@listerpotter.com
 www.listerpotter.com
 
