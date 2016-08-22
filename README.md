@@ -67,5 +67,7 @@ We will be using the Machine Specifications (MSpec) testing framework for this t
 
 To install these packages open up the Package Manage Console and type these commands
 
-'Install-Package Machine.Specifications'
-'Install-Package Machine.Specifications.Should'
+```
+Install-Package Machine.Specifications
+Install-Package Machine.Specifications.Should
+```
