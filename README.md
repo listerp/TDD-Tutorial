@@ -1,7 +1,7 @@
 # TDD-Tutorial #
-*Lister Potter*
-lister@listerpotter.com
-www.listerpotter.com
+####Lister Potter####
+#####lister@listerpotter.com#####
+#####www.listerpotter.com#####
 
 ## What are we learning ##
 The intention of this tutorial is to show how to use TDD in a real world type application, we will be showing how to create an application using TDD, and DI
