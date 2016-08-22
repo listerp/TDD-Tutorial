@@ -232,3 +232,5 @@ Re-Run your tests, you should still have a green result!
 Now this implementation is not perfect, there are a lot of our requirements that it does not take into account, but we 
 have a solid implementaion that does handle a simple word, the next step will be to write a test for a more complex word 
 and see if our current implementation can correctly encode the word, if not we will refactor our code until we have a passing result.
+
+> End of Part 1
