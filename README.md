@@ -111,9 +111,67 @@ we need to be able to encode a single word, so we will implment the encode funct
 on the decision to arrange our tests in project folders based on the namespace of the class being tested we need to create a 
 folder in our TDD.Core.Tests project called Extensions, under that folder create another folder called StringExtensionTests.
 
-After the folders have been created add a new class to the StringExtensionTests folder called when_a_word_is_translated. I know 
-what you are thinking what is with all the ugly underscores in our class name, wouldn't it be better to call it WhenAWordIsTranslated? 
+### The Test ###
+After the folders have been created add a new class to the StringExtensionTests folder called when_a_simple_word_is_encoded. I know 
+what you are thinking what is with all the ugly underscores in our class name, wouldn't it be better to call it WhenASimpleWordIsEncoded? 
 This is done due to the conventions most test runners use, when the tests are shown in the test runner's GUI the underscores are 
 replaced with spaces making the test names very readable.
 
+#### Components of the Test ####
 
+##### Subject Attribute #####
+Each test should have a subject attribute, this describes the context of the test.  This can be a litteral Type under test or
+a description. I prefer to use the litteral type for most tests so all tests for a given type are grouped together in the test runner. 
+So lets set the subject attribute of our test to 
+
+`Subject(typeof(StringExtensions))`
+
+Of course now we have written code that won't compile because we have referenced a type that doesn't yet exist, that is ok this 
+is the first step in our TDD process, remember the basic TDD steps are Red, Green, Refactor, here we are in the "red".
+
+#### Arranging our test ####
+Here we use the `Establish` delegate to setup ("Arrange") any pre-requisits for the test, for a small test like we are doing here 
+we don't really need to use the `Establish` delegate but for consistency I like to always include it.
+
+In your test add the following code:
+
+```
+private static string wordToEncode;
+private static string expectedEncodedWord;
+private static string actualEncodedWord;
+
+Establish context = () =>
+{
+    wordToEncode = "Dog";
+    expectedEncodedWord = "D1g";
+};
+```
+
+#### Acting on our test ####
+Here we use the `Because` delegate to perform the single action we are testing, again for a small test like this one we don't 
+really need to use the `Because` delegate but for consistency lets do so.
+
+In your test add the following code:
+
+```
+Because of = () =>
+{
+    actualEncodedWord = wordToEncode.Encode();
+};
+```
+
+Here we have our second bit of "red", we are trying to call an extension method that doesn't exist, again this is the way this 
+is supposed to work, remember we are designing our solution here we will create our most basic implemntation of this shortly.
+
+#### Getting Assertive ####
+Now that we have Arranged, and Acted on our class, we need to Assert that it correctly performed the task, to do this we will
+use the `It` delegate. When writing `It` delgates when to ensure that we are only testing one aspect of the expected results, 
+so it is not uncommon for a test to have multipe `It` delegates, and since the `It` delegate only tests one thing they are 
+not usually multi-line methods and normally won't need squiggly brackets.
+
+For this particular test we only have one thing to assert, so add the following code to your test class:
+
+```
+It should_set_actualEncodedWord_to_D1g = () =>
+    actualEncodedWord.ShouldEqual(expectedEncodedWord);
+```
