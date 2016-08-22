@@ -4,7 +4,13 @@
 #####www.listerpotter.com#####
 
 ## What are we learning ##
-The intention of this tutorial is to show how to use TDD in a real world type application, we will be showing how to create an application using TDD, and DI.
+The intention of this tutorial is to show how to use TDD in a real world type application, we will be showing how to create an 
+application using TDD, Fakes, and DI.
+
+## What we aren't learning ##
+This tutorial isn't designed to teach you the concepts of TDD, but instead how to implement them in a more "real world" way than 
+most TDD tutorial do, we will touch on some of the concepts behind TDD, but you are expected to have a familiarity with the 
+basic concepts of TDD before viewing this tutorial.
 
 ## Technologies Used ##
 * C# - Visual Studio 2015
