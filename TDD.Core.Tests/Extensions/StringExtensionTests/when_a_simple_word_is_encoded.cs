@@ -1,4 +1,5 @@
 ﻿using Machine.Specifications;
+using TDD.Core.Extensions;
 
 
 namespace TDD.Core.Tests.Extensions.StringExtensionTests

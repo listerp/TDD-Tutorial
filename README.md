@@ -181,3 +181,54 @@ For this particular test we only have one thing to assert, so add the following 
 It should_set_actualEncodedWord_to_D1g = () =>
     actualEncodedWord.ShouldEqual(expectedEncodedWord);
 ```
+
+#### Running our Test ####
+Using ReSharper, lets run our tests.  From The ReSharper menu go to Unit Tests, Run all tests from solution.
+
+You should have recieved a message saying "Build Cancelled", we can't run our tests because our solution won't compile. 
+We need to now implment the minimum amount of code to get our solution to compile.
+
+##### Getting our Solution to Compile #####
+In our TDD.Core project add a folder called `Extensions`, in that folder create a class called StringExtensions.
+
+Add the following code to the new class:
+
+```
+public static string Encode(this string stringToEncode)
+{
+    var encodedValue = string.Empty;
+
+    encodedValue = "D1g";
+
+    return encodedValue;
+}
+```
+
+Now run our tests again, you should have gotten a green (successful) test result, of course this isn't a very good 
+implementation of our class, but it does follow the Red, Green, Refactor pattern of TDD, where we write just enough 
+code to get our test to pass, then knowing we have a passing test we can refactor this into a more usable implementation.
+
+##### Refactoring our Implementation #####
+Now lets refactor our implemntation to be more usable, remember right now we are only focusing on implmenting the code to 
+encode a "simple" word, which for our needs is a word that does not have any embeded special characters, or repeat letters.
+
+Replace your Encode method with the following code:
+
+```
+public static string Encode(this string stringToEncode)
+{
+    var firstLetter = stringToEncode.First();
+    var lastLetter = stringToEncode.Last();
+    var middleLetters = stringToEncode.Skip(1).Take(stringToEncode.Length - 2);
+
+    var encodedValue = $"{firstLetter}{middleLetters.Count()}{lastLetter}";
+
+    return encodedValue;
+}
+```
+
+Re-Run your tests, you should still have a green result!
+
+Now this implementation is not perfect, there are a lot of our requirements that it does not take into account, but we 
+have a solid implementaion that does handle a simple word, the next step will be to write a test for a more complex word 
+and see if our current implementation can correctly encode the word, if not we will refactor our code until we have a passing result.
