@@ -50,7 +50,11 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\StringExtensionTests\when_a_simple_word_is_encoded.cs" />
+    <Compile Include="Extensions\StringExtensionTests\When_a_is_encoded.cs" />
+    <Compile Include="Extensions\StringExtensionTests\When_dog_is_encoded.cs" />
+    <Compile Include="Extensions\StringExtensionTests\When_mind-bogglinG_is_encoded.cs" />
+    <Compile Include="Extensions\StringExtensionTests\When_or_is_encoded.cs" />
+    <Compile Include="Extensions\StringExtensionTests\When_Smooth_is_encoded.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
